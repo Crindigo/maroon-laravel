@@ -39,7 +39,7 @@ return array(
 	|
 	*/
 
-	'timezone' => 'UTC',
+	'timezone' => 'America/Detroit',
 
 	/*
 	|--------------------------------------------------------------------------
@@ -65,7 +65,7 @@ return array(
 	|
 	*/
 
-	'key' => 'GrseGgfWKlwBqtfDKx6ktftPmyDwndNv',
+	'key' => 'tV4MiFVu8lwtz6KY4xZXvWy04ADhxazd',
 
 	/*
 	|--------------------------------------------------------------------------
