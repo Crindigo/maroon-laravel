@@ -1,0 +1,64 @@
+{% from 'MopaBootstrapBundle::flash.html.twig' import session_flash %}
+
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8" />
+    <title>{% block title %}Maroon{% endblock %}</title>
+    {% block stylesheets %}
+    {% stylesheets '@MaroonRPGBundle/Resources/public/less/style.less' %}
+    <link rel="stylesheet" href="{{ asset_url }}" />
+    {% endstylesheets %}
+    {% endblock %}
+    <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+</head>
+<body>
+{% block navbar %}{% endblock %}
+
+<div class="container">
+
+    {% block crumbs %}{% endblock %}
+
+    {% set _headline = block('headline') %}
+    {% set _subheadline = block('sub_headline') %}
+    {% if _headline is not empty %}
+    <div class="page-header">
+        <h1>{{ _headline|raw }}{% if _subheadline is not empty %} <small>{{ _subheadline|raw }}</small>{% endif %}</h1>
+    </div>
+    {% endif %}
+
+    {% block flashes %}
+    {% if app.session.flashbag.peekAll|length > 0 %}
+    <div class="row">
+        <div class="span12">
+            {{ session_flash(true, true) }}
+        </div>
+    </div>
+    {% endif %}
+    {% endblock flashes %}
+
+    {% block body %}{% endblock %}
+</div>
+
+{% block javascripts %}
+{% javascripts '@MaroonRPGBundle/Resources/public/js/underscore-min.js'
+'@MaroonRPGBundle/Resources/public/js/jquery-1.9.1.min.js'
+'@MaroonRPGBundle/Resources/public/js/bootstrap.min.js'
+'@MaroonRPGBundle/Resources/public/js/maroon.js' %}
+<script src="{{ asset_url }}"></script>
+{% endjavascripts %}
+{% endblock %}
+
+<footer>
+    <div class="container">
+        <div class="pull-right">
+            <ul>
+                <li><a target="_blank" href="http://github.com/Crindigo/Maroon">Maroon @ GitHub</a></li>
+                <li><a target="_blank" href="http://crindigo.com/maroon-forum/">Forum</a></li>
+            </ul>
+        </div>
+        <p>Copyright &copy; 2013 Maroon RPG Project</p>
+    </div>
+</footer>
+</body>
+</html>
