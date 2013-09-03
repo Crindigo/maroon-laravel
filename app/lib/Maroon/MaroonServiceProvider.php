@@ -20,7 +20,7 @@ class MaroonServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        if ( $this->app->__get('env') != 'production' ) {
+        if ( $this->app->environment() != 'production' ) {
             $less = new LessCompiler($this->app);
             $less->compileLessFiles();
         }
